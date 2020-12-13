@@ -244,7 +244,7 @@ class Adjudicator:
                 "Clustering VCF file(s), to make one VCF input file for gramtools"
             )
             tracker = variant_tracking.VariantTracker(self.cluster_dir, self.ref_fasta)
-            tracker.merge_vcf_files(self.vcf_files)
+            tracker.merge_vcf_files(self.vcf_files, many_files=False)
             tracker.cluster(self.clustered_vcf_prefix, float("Inf"), max_alleles=5000)
             if not self.debug:
                 os.unlink(f"{self.clustered_vcf_prefix}.excluded.tsv")
